@@ -8,6 +8,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id", nullable = false, columnDefinition = "INT(11) UNSIGNED")
     private long id;
 
     @Column (name = "title", nullable = false, length = 55)
@@ -45,4 +46,6 @@ public class Post {
     public String getCategory() {return category;}
 
     public void setCategory(String category) {this.category = category;}
+
+
 }

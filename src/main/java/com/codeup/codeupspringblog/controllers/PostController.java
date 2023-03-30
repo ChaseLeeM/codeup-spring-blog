@@ -1,20 +1,26 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.model.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PostController {
 
-
-    public PostController(PostRepository postDao, UserController userDao) {
+    private final PostRepository postDao;
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
     }
 
     @GetMapping("/posts")
     @ResponseBody
     public String getPosts() {
-        return "View all posts";
+        List<Post> posts = postDao.findAll();
+        model.addAttribute("posts", posts);
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
