@@ -1,11 +1,15 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.codeup.codeupspringblog.model.Post;
 
 @Controller
 public class PostController {
+
+
+    public PostController(PostRepository postDao, UserController userDao) {
+    }
 
     @GetMapping("/posts")
     @ResponseBody
@@ -30,4 +34,11 @@ public class PostController {
     public String createPost() {
         return "Create a new post";
     }
+
+    @GetMapping("/posts/{id}/edit")
+    @ResponseBody
+    public String editPostForm(@PathVariable Long id) {
+        return "View the form for editing post with id: " + id;
+    }
+
 }

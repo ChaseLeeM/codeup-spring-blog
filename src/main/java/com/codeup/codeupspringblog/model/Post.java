@@ -16,19 +16,19 @@ public class Post {
     @Column (name = "body", nullable = false, length = 300)
     private String body;
 
+    @Column (name = "category", nullable = false, length = 55)
+    private String category;
+
     public Post() {
     }
 
-    public Post(long id, String title, String body) {
+    public Post(long id, String title, String body, String category) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.category = category;
     }
 
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
 
     public String getTitle() {return title;}
 
@@ -41,4 +41,8 @@ public class Post {
     public long getId() {return id;}
 
     public void setId(long id) {this.id = id;}
+
+    public String getCategory() {return category;}
+
+    public void setCategory(String category) {this.category = category;}
 }
