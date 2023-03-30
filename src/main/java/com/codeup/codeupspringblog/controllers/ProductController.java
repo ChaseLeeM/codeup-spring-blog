@@ -22,9 +22,6 @@ public class ProductController {
     public String insertProduct(@RequestParam String name, @RequestParam int price) {
         System.out.println(name);
         System.out.println(price);
-        // create a product object from request params
-        // print out the product
-        // redirect to the "/"
         return "redirect:/";
     }
 
@@ -35,11 +32,6 @@ public class ProductController {
                 new Product(2L, "3DO", 20),
                 new Product(3L, "CDI", 500)
         ));
-
-//        List<Product> filteredProductsList = products
-//            .stream()
-//            .filter(product -> product.getCostInCents() < 100)
-//            .collect(Collectors.toList());
 
         model.addAttribute("products", products);
         return "product/index";
