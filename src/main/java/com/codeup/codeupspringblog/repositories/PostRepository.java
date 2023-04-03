@@ -1,6 +1,6 @@
 package com.codeup.codeupspringblog.repositories;
 
-import com.codeup.codeupspringblog.model.Post;
+import com.codeup.codeupspringblog.models.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,6 +1,6 @@
 package com.codeup.codeupspringblog.controllers;
 
-import com.codeup.codeupspringblog.model.Post;
+import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
