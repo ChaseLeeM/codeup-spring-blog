@@ -1,51 +1,66 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+import org.apache.catalina.User;
 
 @Entity
-@Table(name = "posts")
-public class Post {
+@Table(name="blogs")
 
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id", nullable = false, columnDefinition = "INT(11) UNSIGNED")
     private long id;
-
-    @Column (name = "title", nullable = false, length = 55)
+    @Column(nullable = false)
     private String title;
-
-    @Column (name = "body", nullable = false, length = 300)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
-    @Column (name = "category", nullable = false, length = 55)
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Post() {
-    }
+    public Post(){}
 
-    public Post(long id, String title, String body, String category) {
+    public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.category = category;
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    public Post(long id, String title, String body, User user){
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.user = user;
     }
 
 
-    public String getTitle() {return title;}
+    public long getId() {
+        return id;
+    }
 
-    public void setTitle(String title) {this.title = title;}
+    public void setId(Long id) {this.id = id;}
 
-    public String getBody() {return body;}
+    public String getTitle() {
+        return title;
+    }
 
-    public void setBody(String body) {this.body = body;}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public long getId() {return id;}
+    public String getBody() {
+        return body;
+    }
 
-    public void setId(long id) {this.id = id;}
-
-    public String getCategory() {return category;}
-
-    public void setCategory(String category) {this.category = category;}
-
-
+    public void setBody(String body) {
+        this.body = body;
+    }
+    public User getUser() {return user;}
+    public void setUser(User user) {this.user = user;}
 }

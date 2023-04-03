@@ -2,48 +2,62 @@ package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
 
-    private PostRepository postsDao;
-    public PostController(PostRepository postDao) {
-        this.postsDao = postDao;
+    private PostRepository postRepository;
+
+    public PostController(PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
     @GetMapping("/posts")
-    @ResponseBody
     public String getPosts(Model model) {
-        model.addAttribute("posts", postsDao.findAll());
+        model.addAttribute("posts", postRepository.findAll());
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String getPost(@PathVariable Long id) {
-        return "View post with id: " + id;
+    public String getPost(@PathVariable Long id, Model model) {
+        Post post = postRepository.findById(id);
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
+
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String createPostForm() {
-        return "View the form for creating a post";
+    public String createPostForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String createPost() {
-        return "Create a new post";
+    public String createPost(@ModelAttribute Post post) {
+        User user = userDao.findById(1L).get();
+        post.setUser(user);
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
-    @ResponseBody
-    public String editPostForm(@PathVariable Long id) {
-        return "View the form for editing post with id: " + id;
+    public String editPostForm(@PathVariable Long id, Model model) {
+        Post post = postRepository.findById(id);
+        model.addAttribute("post", post);
+        return "posts/edit";
     }
 
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable Long id, @ModelAttribute Post updatedPost) {
+        Post post = postRepository.findById(id);
+        post.setTitle(updatedPost.getTitle());
+        post.setContent(updatedPost.getContent());
+        postRepository.save(post);
+        return "redirect:/posts/" + id;
+    }
 }
+
