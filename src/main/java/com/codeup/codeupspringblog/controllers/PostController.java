@@ -4,22 +4,21 @@ import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.ui.Model;
 import java.util.List;
 
 @Controller
 public class PostController {
 
-    private final PostRepository postDao;
+    private PostRepository postsDao;
     public PostController(PostRepository postDao) {
-        this.postDao = postDao;
+        this.postsDao = postDao;
     }
 
     @GetMapping("/posts")
     @ResponseBody
-    public String getPosts() {
-        List<Post> posts = postDao.findAll();
-        model.addAttribute("posts", posts);
+    public String getPosts(Model model) {
+        model.addAttribute("posts", postsDao.findAll());
         return "posts/index";
     }
 
