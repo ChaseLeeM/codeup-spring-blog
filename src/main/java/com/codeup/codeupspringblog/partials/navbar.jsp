@@ -26,6 +26,9 @@
                         <a class="dropdown-item" href="/">Create Post</a>
                         <a class="dropdown-item" href="/posts/edit">Edit Post</a>
                         <a class="dropdown-item" href="/posts/delete">Delete Post</a>
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
