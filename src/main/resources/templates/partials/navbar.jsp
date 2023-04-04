@@ -36,12 +36,6 @@
                 </div>
             </div>
         </div>
-        <%--        <div class="collapse navbar-collapse" id="navbarNavDropdown">--%>
-        <%--            <div class="nav-item dropdown">--%>
-        <%--                <a class="dropdown-item" href="/ads/create">Create Ad</a>--%>
-        <%--                <a class="dropdown-item" href="/ads">View Ads</a>--%>
-        <%--                <a class="dropdown-item" href="/logout">Logout</a>--%>
-        <%--            </div>--%>
         </ul>
         <% } else { %>
         <ul class="navbar-nav">
