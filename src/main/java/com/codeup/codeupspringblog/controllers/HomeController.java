@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
+    public HomeController(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
     @GetMapping("/")
     @ResponseBody
     public String returnLandingPage() {
@@ -16,7 +20,7 @@ public class HomeController {
 
     private final EmailService emailService;
 
-    public AdController(EmailService emailService) {
+    public void AdController(EmailService emailService) {
         this.emailService = emailService;
     }
 
