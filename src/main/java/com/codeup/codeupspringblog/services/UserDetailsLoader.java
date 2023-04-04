@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 public class UserDetailsLoader implements UserDetailsService {
     private final UserRepository users;
 
-    public UserDetailsLoader(UserRepository users) {
-        this.userDao = userDao;
+    public UserDetailsLoader(UserRepository users, UserRepository users1) {
+        this.users = users1;
     }
 
     @Override

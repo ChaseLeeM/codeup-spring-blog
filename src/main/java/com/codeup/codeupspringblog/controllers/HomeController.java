@@ -18,7 +18,7 @@ public class HomeController {
         return "This is the landing page!";
     }
 
-    private final EmailService emailService;
+    private EmailService emailService;
 
     public void AdController(EmailService emailService) {
         this.emailService = emailService;

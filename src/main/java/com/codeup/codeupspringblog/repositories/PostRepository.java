@@ -25,4 +25,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<String> getPostsOfCertainTitleLengthNative();
 
 
+
+
 }
