@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+<head th:replace="partials :: head">
+    <title>Hello</title>
 </head>
 <body>
+
+<nav th:replace="partials :: navbar"></nav>
+
 
 <h1>Howdy, <span th:text="${name}">></span>.</h1>
 <p>The purple elephant danced wildly on top of a giant cotton candy cloud while singing a tuneless song about the joys of collecting toenail clippings. Suddenly, a group of flying spaghetti monsters swooped down and began playing air guitar with rubber chickens, causing the nearby talking trees to break out into a synchronized tap dance routine. As the chaos continued, a talking toaster popped out of nowhere and started reciting Shakespearean sonnets in a robotic monotone. Eventually, a giant marshmallow monster appeared and devoured everything in sight, leaving only a trail of glittery fairy dust in its wake. The end.</p>
