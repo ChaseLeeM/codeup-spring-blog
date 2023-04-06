@@ -1,15 +1,15 @@
 package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Post;
-import com.codeup.codeupspringblog.models.User;
+import com.codeup.codeupspringblog.models.Users;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 @Controller
 public class PostController {
@@ -48,8 +48,8 @@ public class PostController {
 
     @PostMapping("/posts")
     public String createPOST(@ModelAttribute Post post) {
-        User user = userDao.findById(1L).get();
-        post.setUser(user);
+        Users users = userDao.findById(1L).get();
+        post.setUser(users);
         emailService.prepareAndSend("New Post","You created a new post");
         System.out.println("User created new post");
         postDao.save(post);

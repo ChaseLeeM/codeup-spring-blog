@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,22 +66,22 @@ public class User {
     }
 
     //constructors
-    public User() {
+    public Users() {
     }
-    public User(String username, String email, String password) {
+    public Users(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public User(String username, String email, String password, List<Post> posts) {
+    public Users(String username, String email, String password, List<Post> posts) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.posts = posts;
     }
 
-    public User(long id, String username, String email, String password, List<Post> posts) {
+    public Users(long id, String username, String email, String password, List<Post> posts) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -89,7 +89,7 @@ public class User {
         this.posts = posts;
     }
 
-    public User(User copy) {
+    public Users(Users copy) {
         id = copy.id;
         username = copy.username;
         email = copy.email;
